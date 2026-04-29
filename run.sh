@@ -1,25 +1,26 @@
 #!/bin/bash
 
-# Đường dẫn Maven của bạn
+# Khai báo đường dẫn tuyệt đối đến thư mục chứa Maven của IntelliJ
 MVN_CMD="C:/Program Files/JetBrains/IntelliJ IDEA 2025.3.3/plugins/maven/lib/maven3/bin/mvn"
 
 echo "==================================================="
-echo "  BAI 04: KIỂM THỬ ĐA HỆ ĐIỀU HÀNH (LOCAL TEST) "
+echo "  BÀI 05: KIỂM TRA ĐỘ BAO PHỦ CODE (LOCAL TEST) "
 echo "==================================================="
 
 echo ""
-echo "[1] Dang don dep du an (mvn clean)..."
+echo "[1] Đang dọn dẹp các file cũ (mvn clean)..."
 "$MVN_CMD" clean
 
 echo ""
-echo "[2] Kiem tra Checkstyle..."
+echo "[2] Đang kiểm tra lỗi Checkstyle (mvn checkstyle:check)..."
 "$MVN_CMD" checkstyle:check
 
 echo ""
-echo "[3] Chay Test tuong thich HDH va Dong goi (mvn install)..."
-"$MVN_CMD" install
+echo "[3] Đang chạy Test và Đo lường Coverage (mvn verify)..."
+"$MVN_CMD" verify
 
 echo ""
 echo "==================================================="
-echo "  DONE! KIEM TRA LOG DE XEM CAC TEST CASE CO PASS KHONG"
+echo "  HOÀN THÀNH! KIỂM TRA KẾT QUẢ JACOCO BÊN TRÊN"
+echo "  Mở target/site/jacoco/index.html để xem báo cáo"
 echo "==================================================="
